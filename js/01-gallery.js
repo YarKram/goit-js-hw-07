@@ -25,27 +25,28 @@ galleryContainer.insertAdjacentHTML("beforeend", galleryElementMarkup);
 
 galleryContainer.addEventListener("click", showImage);
 
+let instance = {};
+
 function showImage(e) {
 	e.preventDefault();
 	if (!e.target.classList.contains("gallery__image")) {
 		return;
 	}
 
-	const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" width="800" height="600">
-`);
+	instance = basicLightbox.create(
+		`
+    <img src="${e.target.dataset.source}" width="800" height="600">`
+	);
 	instance.show();
+	window.addEventListener("keydown", onEsc);
+}
 
-	document.addEventListener("keydown", onClose);
-
-	function onClose(e) {
-		if (e.code !== "Escape") {
-			return;
-		}
-
-		instance.close();
-		document.removeEventListener("keydown", onClose);
-
-		console.log(e.code);
+function onEsc(e) {
+	if (e.code !== "Escape") {
+		return;
 	}
+	instance.close();
+	window.removeEventListener("keydown", onEsc);
+
+	console.log(e.code);
 }
