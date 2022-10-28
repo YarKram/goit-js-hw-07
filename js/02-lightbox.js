@@ -21,19 +21,4 @@ const lightbox = new SimpleLightbox(".gallery__item", {
 	captionDelay: 250,
 });
 
-// galleryContainer.addEventListener("click", showImage);
-
-// function showImage(e) {
-// 	e.preventDefault();
-// 	if (!e.target.classList.contains("gallery__image")) {
-// 		return;
-// 	}
-// 	const lightbox = new SimpleLightbox(".gallery__item", {
-// 		captionsData: "alt",
-// 		captionDelay: 250,
-// 	});
-
-// 	// show.simplelightbox();
-// }
-
 console.log(galleryItems);
