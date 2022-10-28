@@ -16,19 +16,24 @@ const galleryContainer = document.querySelector(".gallery");
 const galleryElementMarkup = createGalleryMarkup(galleryItems);
 galleryContainer.insertAdjacentHTML("beforeend", galleryElementMarkup);
 
-galleryContainer.addEventListener("click", showImage);
+const lightbox = new SimpleLightbox(".gallery__item", {
+	captionsData: "alt",
+	captionDelay: 250,
+});
 
-function showImage(e) {
-	e.preventDefault();
-	if (!e.target.classList.contains("gallery__image")) {
-		return;
-	}
-	const lightbox = new SimpleLightbox(".gallery__item", {
-		captionsData: "alt",
-		captionDelay: 250,
-	});
+// galleryContainer.addEventListener("click", showImage);
 
-	// show.simplelightbox();
-}
+// function showImage(e) {
+// 	e.preventDefault();
+// 	if (!e.target.classList.contains("gallery__image")) {
+// 		return;
+// 	}
+// 	const lightbox = new SimpleLightbox(".gallery__item", {
+// 		captionsData: "alt",
+// 		captionDelay: 250,
+// 	});
+
+// 	// show.simplelightbox();
+// }
 
 console.log(galleryItems);
