@@ -35,18 +35,18 @@ function showImage(e) {
 
 	instance = basicLightbox.create(
 		`
-    <img src="${e.target.dataset.source}" width="800" height="600">`
+    <img src="${e.target.dataset.source}" width="800" height="600">`,
+		{
+			onShow: () => document.addEventListener("keydown", onEsc),
+			onClose: () => document.removeEventListener("keydown", onEsc),
+		}
 	);
 	instance.show();
-	window.addEventListener("keydown", onEsc);
 }
 
 function onEsc(e) {
-	if (e.code !== "Escape") {
-		return;
+	if (e.code === "Escape") {
+		instance.close();
 	}
-	instance.close();
-	window.removeEventListener("keydown", onEsc);
-
 	console.log(e.code);
 }
